@@ -1,0 +1,170 @@
+.wrap {
+    background-color: aqua;
+    height: 600px;
+}
+.main {
+    width: 1200px;
+    margin: 0 auto;
+}
+.left {
+    width: 1000px;
+    float: left;
+}
+.right {
+    width: 200px;
+    float: left;
+}
+.header {
+    height: 50px;
+    background-color: cadetblue;
+    text-align: center;
+}
+.header-title{
+    float:left;
+    height:50px;
+}
+.header-title h1{
+    margin:0;
+}
+.header-link{
+    float:left;
+    width:200px;
+    height:50px;
+    position: relative;
+}
+.header-link a{
+    position: absolute;
+    bottom:0;
+}
+#container {
+    position: relative;
+    height: 200px;
+    width:1000px;
+    overflow: hidden;
+}
+#list{
+    position: absolute;
+    width: 7000px;
+    height:200px;
+    z-index: 1;
+    left:-1000px;
+}
+#list img {
+    width: 1000px;
+    height:200px;
+    float: left;
+}
+#buttons{
+    position: absolute;
+    height:10px;
+    width:200px;
+    z-index: 2;
+    bottom:10px;
+    left:400px;
+}
+#buttons span {
+    cursor: pointer;
+    float: left;
+    border: 1px solid #fff;
+    width: 10px;
+    height: 10px; 
+    border-radius: 50%;
+    background: #333;
+    margin-right: 15px;
+}
+#buttons .on {
+    background: orangered;
+}
+.arrow{
+    cursor: pointer;
+    display: none;
+    position: absolute;
+    height:40px;
+    width:40px;
+    z-index:2;
+    top:80px;
+    background-color:rgba (0, 0, 0,.3);
+    font-size: 36px;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+}
+.arrow:hover{
+    background-color:rgba(0, 0, 0,.7)
+}
+#container:hover .arrow{  
+    display: block;
+}
+#prev{
+    left: 5px;
+}
+#next{
+    right:5px;
+}
+.content {
+    height: 350px;
+}
+.block {
+    width:25%;
+    height:350px;
+    float: left;
+}
+#one {
+    color: coral;
+}
+#two {
+    color: green;
+}
+#three {
+    color: red;
+}
+#four {
+    color: blue;
+}
+#five {
+    color: red;
+    text-decoration:underline;
+    text-align:right;
+}
+.right p {
+    text-align: right;
+}
+.footer {
+    margin-top: 100px;
+    height: 50px;
+    text-align: center;
+    padding: 0;
+}
+.footer-left {
+    border-width:0 0 0 25px;
+    border-style: solid;
+    border-color: blue;
+    background-color: cadetblue;
+    width: 400px;
+    height: 50px;
+    position: absolute;
+    left: 0;
+}
+.footer-right {
+    border-width:0 25px 0 0;
+    border-style: solid;
+    border-color: blue;
+    background-color: cadetblue;
+    width:425px;
+    height:50px;
+    position: absolute;
+    right: 0;
+}
+.footer-middle{
+    margin: 0 400px;
+    height:50px;
+    position: relative;
+}
+.footer-middle p{
+    width:100%;
+    position: absolute;
+    bottom: 0;
+}
+.h{
+    margin:0;
+}
