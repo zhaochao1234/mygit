@@ -7,6 +7,7 @@ window.onload = function(){
     var index = 1;
     var animated = false;
     var interval = 5000;
+    var timer;
 
     //图片转换的函数
     var animate = function(newIndex){
@@ -16,11 +17,11 @@ window.onload = function(){
         var interval = 10;
         var speed = (index - newIndex) * 1000 / (time / interval);
 
-        //动画函数 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        //动画函数
         var go = function(){
     
             if((index - newIndex)*(list.offsetLeft + newIndex*1000) < 0){
-                lift.style.left = (list.offsetLeft + speed) + 'px';
+                list.style.left = (list.offsetLeft + speed) + 'px';
                 setTimeout(go,interval);
             }
         }
@@ -46,17 +47,16 @@ window.onload = function(){
 
     //归位的函数
     var homing = function(){
-        if(newIndex > 5){
+        if(index > 5){
             list.style.left = '-1000px';
             index = 1;
-        }
-        if(newIndex < 1){
+        }else if(index < 1){
             list.style.left = '-5000px';
             index = 5;
         }
     } 
 
-    //自动播放和停止播放的函数  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    //自动播放和停止播放的函数
     var play = function(){
         timer = setTimeout(() => {
             next.onclick;
@@ -67,7 +67,7 @@ window.onload = function(){
         clearTimeout(timer);
     }
 
-    //执行
+    //点击事件
     prev.onclick = function(){
         if(animated)return;
         newIndex = index - 1;
@@ -82,7 +82,6 @@ window.onload = function(){
         homing();
     }
 
-    //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
     for(var i = 0;i < buttons.length;i++){
         buttons[i].onclick = function(){
             if(animated)return;
@@ -90,8 +89,14 @@ window.onload = function(){
         }
     }
 
-    container.onmouseout = play;
-    container.onmouseover = stop;
+    //循环播放
+    var play = function(){
+        timer = setInterval(next.onclick,interval);
+    }
+    var stop = clearInterval(timer);
+
+    container.onmouseout = play();
+    container.onmouseover = stop();
 
     play();
    
