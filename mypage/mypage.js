@@ -17,17 +17,9 @@ window.onload = function(){
         var interval = 10;
         var speed = (index - newIndex) * 1000 / (time / interval);
 
-        //动画函数
-        var go = function(){
-    
-            if((index - newIndex)*(list.offsetLeft + newIndex*1000) < 0){
-                list.style.left = (list.offsetLeft + speed) + 'px';
-                setTimeout(go,interval);
-            }
+        for(i=0;i<5;i++){
+            buttons[i].className = '';
         }
-
-        //转换buttons
-        buttons[index - 1].className = '';
         if(newIndex > 5){
             buttons[0].className = 'on';
         }else if(newIndex < 1){
@@ -35,68 +27,68 @@ window.onload = function(){
         }else{
             buttons[newIndex - 1].className = 'on';
         }
-        
-        //执行动画
-        go();
 
-        list.style.left = newIndex * - 1000 + 'px';
-
-        index = newIndex;
-        animated = false;
-    }
-
-    //归位的函数
-    var homing = function(){
-        if(index > 5){
-            list.style.left = '-1000px';
-            index = 1;
-        }else if(index < 1){
-            list.style.left = '-5000px';
-            index = 5;
+        //动画函数
+        var go = function(){
+    
+            if((index - newIndex)*(list.offsetLeft + newIndex*1000) < 0){
+                list.style.left = (list.offsetLeft + speed) + 'px';
+                setTimeout(go,interval);
+            }else{
+                if(newIndex > 5){
+                    list.style.left = '-1000px';
+                    index = 1;
+                }else if(newIndex < 1){
+                    list.style.left = '-5000px';
+                    index = 5;
+                }else{
+                    list.style.left = newIndex * - 1000 + 'px';
+                    index = newIndex;
+                }
+                animated = false;
+                console.log('index=' +index);
+            }
         }
-    } 
+        
+        go();
+    }
 
-    //自动播放和停止播放的函数
-    var play = function(){
-        timer = setTimeout(() => {
-            next.onclick;
-            play;
-        }, interval);
-    }
-    var stop = function(){
-        clearTimeout(timer);
-    }
+
 
     //点击事件
     prev.onclick = function(){
         if(animated)return;
         newIndex = index - 1;
         animate(newIndex);
-        homing();
     }
 
     next.onclick =function(){
         if(animated)return;
         newIndex = index + 1;
         animate(newIndex);
-        homing();
     }
 
-    for(var i = 0;i < buttons.length;i++){
-        buttons[i].onclick = function(){
+    //用闭包解决循环定义函数的问题
+    var buttonsClick = function(i){
+        return function(){
             if(animated)return;
-            animate(i + 1);
+            animate(i+1);
         }
+    }
+    for(var i = 0;i < buttons.length;i++){
+        buttons[i].onclick = buttonsClick(i);
     }
 
     //循环播放
     var play = function(){
         timer = setInterval(next.onclick,interval);
     }
-    var stop = clearInterval(timer);
+    var stop = function(){
+        clearInterval(timer);
+    }
 
-    container.onmouseout = play();
-    container.onmouseover = stop();
+    container.onmouseout = play;
+    container.onmouseover = stop;
 
     play();
    
