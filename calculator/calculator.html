@@ -2,6 +2,7 @@
 <head>
     <meta charset="utf-8"/>
     <title>calculator</title>
+    <script src="calculator.js"></script>
     <style>
         #contain{
             width: 600px;
@@ -11,6 +12,9 @@
         .row{
             width:600px;
             height:100px;
+            display:flex;
+            justify-content:space-around;
+            align-items: center;
         }
         #displayContainer{
             height:150px;
@@ -18,22 +22,13 @@
         #display{
             width:550px;
             height:130px;
-            position:absolute;
-            margin:8px 25px;
             border: solid 1px black;
             background-color: white;
-        }
-        #display P{
-            font-size: 25px;
+            font-size: 50px;
             text-align: right;
-        }
-        .button{
-            width:150px;
-            height:100px;
-            float:left;
+            
         }
         button{
-            margin:10px 25px;
             width:100px;
             height:80px;
             font-size: 60px;
@@ -43,40 +38,37 @@
 <body>
     <div id="contain">
         <div class="row" id="displayContainer">
-            <div id="display">
-                <p id="input">0</p>
-                <p id="equ">0</p>
-            </div>
+            <div id="display">0</div>
         </div>
         <div class="row">
-                <div class="button"><button type="button" value="ce">ce</button></div>
-                <div class="button"><button type="button" value="c">c</button></div>
-                <div class="button"><button type="button" value="b">b</button></div>
-                <div class="button"><button type="button" value="+">+</button></div>
+            <button type="button" value="ce">ce</button>
+            <button type="button" value="c">c</button>
+            <button type="button" value="b">b</button>
+            <button type="button" value="+">+</button>
         </div>
         <div class="row">
-            <div class="button"><button type="button" value="1">1</button></div>
-            <div class="button"><button type="button" value="2">2</button></div>
-            <div class="button"><button type="button" value="3">3</button></div>
-            <div class="button"><button type="button" value="-">-</button></div>
+            <button type="button" value="1">1</button>
+            <button type="button" value="2">2</button>
+            <button type="button" value="3">3</button>
+            <button type="button" value="-">-</button>
         </div>
         <div class="row">
-            <div class="button"><button type="button" value="4">4</button></div>
-            <div class="button"><button type="button" value="5">5</button></div>
-            <div class="button"><button type="button" value="6">6</button></div>
-            <div class="button"><button type="button" value="*">*</button></div>
+            <button type="button" value="4">4</button>
+            <button type="button" value="5">5</button>
+            <button type="button" value="6">6</button>
+            <button type="button" value="*">*</button>
         </div>
         <div class="row">
-            <div class="button"><button type="button" value="7">7</button></div>
-            <div class="button"><button type="button" value="8">8</button></div>
-            <div class="button"><button type="button" value="9">9</button></div>
-            <div class="button"><button type="button" value="/">/</button></div>
+            <button type="button" value="7">7</button>
+           <button type="button" value="8">8</button>
+           <button type="button" value="9">9</button>
+           <button type="button" value="/">/</button>
         </div>
         <div class="row">
-                <div class="button"><button type="button" value="+/-">+/-</button></div>
-                <div class="button"><button type="button" value="0">0</button></div>
-                <div class="button"><button type="button" value=".">.</button></div>
-                <div class="button"><button type="button" value="=">=</button></div>
-            </div>
+            <button type="button" value="+/-">+/-</button>
+            <button type="button" value="0">0</button>
+            <button type="button" value=".">.</button>
+            <button type="button" value="=">=</button>
+        </div>
     </div>
 </body>
